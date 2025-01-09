@@ -1,3 +1,4 @@
+import {IMAGE_SRC} from '../../constants/imageSrc';
 import {MODAL_NAME} from '../../constants/modal';
 import {useModalStore} from '../../store/modal';
 import {useRestaurantStore} from '../../store/restaurants';
@@ -5,12 +6,12 @@ import {type Restaurant as RestaurantType} from '../../type/serviceType';
 import styles from './style.module.css';
 
 const IMAGE_BY_CATEGORY: Record<string, string> = {
-  한식: '/category-korean.png',
-  중식: '/category-chinese.png',
-  일식: '/category-japanese.png',
-  양식: '/category-western.png',
-  아시안: '/category-asian.png',
-  기타: '/category-etc.png',
+  한식: IMAGE_SRC.categoryKorean,
+  중식: IMAGE_SRC.categoryChinese,
+  일식: IMAGE_SRC.categoryJapanese,
+  양식: IMAGE_SRC.categoryWestern,
+  아시안: IMAGE_SRC.categoryAsian,
+  기타: IMAGE_SRC.categoryEtc,
 };
 
 export const Restaurant = (restaurant: RestaurantType) => {
