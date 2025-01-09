@@ -3,10 +3,12 @@ import {Modal} from '../Modal';
 import {Select} from '../Select';
 import styles from './style.module.css';
 import {Restaurant} from '../../type/serviceType';
-import {useRestaurantStore} from '../../store/restaurants';
+// import {useRestaurantStore} from '../../store/restaurants';
+import {usePostRestaurants} from '../../hooks/usePostRestaurant';
 
 export const AddRestaurantModal = () => {
-  const {addRestaurant} = useRestaurantStore();
+  // const {addRestaurant} = useRestaurantStore();
+  const {postRestaurant} = usePostRestaurants();
   const formRef = useRef<HTMLFormElement>(null);
 
   const [formData, setFormData] = useState<Restaurant>({
@@ -30,7 +32,8 @@ export const AddRestaurantModal = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addRestaurant({...formData, id: Date.now().toString()});
+    postRestaurant({...formData, id: Date.now().toString()});
+    // addRestaurant({...formData, id: Date.now().toString()});
   };
 
   return (
