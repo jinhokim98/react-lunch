@@ -1,4 +1,5 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import {Lunch} from './pages/Lunch';
 
 import './styles/global.css';
@@ -17,6 +18,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Lunch />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
