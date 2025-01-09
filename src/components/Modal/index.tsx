@@ -27,7 +27,7 @@ export const Modal = ({children, name, title, button, buttonName}: ModalProps) =
       <div className={styles.modalContainer}>
         <h2 className={`${styles.modalTitle} text-title`}>{title}</h2>
         {children}
-        <Button type={button?.type} variants="primary" onClick={handleOnClick} {...button}>
+        <Button type={button?.type} variants="primary" {...button} onClick={handleOnClick}>
           {buttonName}
         </Button>
       </div>

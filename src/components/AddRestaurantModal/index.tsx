@@ -14,6 +14,8 @@ export const AddRestaurantModal = () => {
     category: '',
   });
 
+  const disabled = formData.name.trim() === '' || formData.description.trim() === '' || formData.category === '';
+
   const handleChange = (field: keyof Restaurant, value: string) => {
     setFormData(prev => ({...prev, [field]: value}));
   };
@@ -30,7 +32,12 @@ export const AddRestaurantModal = () => {
   };
 
   return (
-    <Modal name="add" title="새로운 음식점" buttonName="추가하기" button={{type: 'submit', onClick: handleModalSubmit}}>
+    <Modal
+      name="add"
+      title="새로운 음식점"
+      buttonName="추가하기"
+      button={{type: 'submit', disabled, onClick: handleModalSubmit}}
+    >
       <form ref={formRef} onSubmit={handleSubmit}>
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>
           <label htmlFor="category" className="text-caption">

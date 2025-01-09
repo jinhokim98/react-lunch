@@ -19,6 +19,13 @@
   margin-right: 0;
 }
 
+.button:disabled {
+  background: var(--grey-200);
+  color: var(--grey-500);
+
+  cursor: not-allowed;
+}
+
 .buttonSecondary {
   border: 1px solid var(--grey-300);
   background: transparent;
