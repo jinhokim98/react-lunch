@@ -37,6 +37,7 @@ export const useRestaurantStore = create<State & Action>((set, get) => {
 
     selectRestaurant: selectedRestaurant => set(() => ({selectedRestaurant})),
 
+    // 비동기 상태관리를 tanstack query에 위임하여 아래 메서드는 사용하지 않습니다.
     addRestaurant: newRestaurant =>
       set(state => {
         const updatedRestaurants = [...state.restaurants, newRestaurant];

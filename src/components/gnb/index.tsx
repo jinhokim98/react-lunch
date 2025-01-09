@@ -1,3 +1,4 @@
+import {MODAL_NAME} from '../../constants/modal';
 import {useModalStore} from '../../store/modal';
 import styles from './style.module.css';
 
@@ -5,7 +6,7 @@ export const GNB = () => {
   const {openModal} = useModalStore();
 
   const onClick = () => {
-    openModal('add');
+    openModal(MODAL_NAME.add);
   };
 
   return (

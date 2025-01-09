@@ -1,9 +1,10 @@
 import {useModalStore} from '../../store/modal';
+import {ModalName} from '../../type/serviceType';
 import {Button} from '../Button';
 import styles from './style.module.css';
 
 type ModalProps = React.PropsWithChildren & {
-  name: string;
+  name: ModalName;
   title: string;
   button?: React.ComponentProps<'button'>;
   buttonName: string;

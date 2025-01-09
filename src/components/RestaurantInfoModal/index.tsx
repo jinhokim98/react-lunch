@@ -1,3 +1,4 @@
+import {MODAL_NAME} from '../../constants/modal';
 import {useRestaurantStore} from '../../store/restaurants';
 import {Modal} from '../Modal';
 import styles from './style.module.css';
@@ -7,7 +8,7 @@ export const RestaurantInfoModal = () => {
 
   return (
     <Modal
-      name="info"
+      name={MODAL_NAME.info}
       title={selectedRestaurant?.name ?? '음식점 정보'}
       buttonName="닫기"
       button={{onClick: () => selectRestaurant(null)}}

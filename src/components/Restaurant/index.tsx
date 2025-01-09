@@ -1,3 +1,4 @@
+import {MODAL_NAME} from '../../constants/modal';
 import {useModalStore} from '../../store/modal';
 import {useRestaurantStore} from '../../store/restaurants';
 import {type Restaurant as RestaurantType} from '../../type/serviceType';
@@ -19,7 +20,7 @@ export const Restaurant = (restaurant: RestaurantType) => {
 
   const onClick = () => {
     selectRestaurant(restaurant);
-    openModal('info');
+    openModal(MODAL_NAME.info);
   };
 
   return (

@@ -1,12 +1,13 @@
 import {create} from 'zustand';
+import {ModalName} from '../type/serviceType';
 
 type State = {
-  modals: Record<string, boolean>;
+  modals: Record<ModalName, boolean>;
 };
 
 type Action = {
-  openModal: (name: string) => void;
-  closeModal: (name: string) => void;
+  openModal: (name: ModalName) => void;
+  closeModal: (name: ModalName) => void;
 };
 
 export const useModalStore = create<State & Action>(set => ({

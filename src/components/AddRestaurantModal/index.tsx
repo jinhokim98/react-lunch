@@ -5,6 +5,7 @@ import styles from './style.module.css';
 import {Restaurant} from '../../type/serviceType';
 // import {useRestaurantStore} from '../../store/restaurants';
 import {usePostRestaurants} from '../../hooks/usePostRestaurant';
+import {MODAL_NAME} from '../../constants/modal';
 
 export const AddRestaurantModal = () => {
   // const {addRestaurant} = useRestaurantStore();
@@ -38,7 +39,7 @@ export const AddRestaurantModal = () => {
 
   return (
     <Modal
-      name="add"
+      name={MODAL_NAME.add}
       title="새로운 음식점"
       buttonName="추가하기"
       button={{type: 'submit', disabled, onClick: handleModalSubmit}}
