@@ -4,13 +4,13 @@ import {Select} from '../Select';
 import styles from './style.module.css';
 
 export const FilterContainer = () => {
-  const {filterByCategory} = useRestaurantStore();
+  const {changeCategory} = useRestaurantStore();
 
   const [selectedCategory, setSelectedCategory] = useState('전체');
 
   const onChange = (category: string) => {
     setSelectedCategory(category);
-    filterByCategory(category);
+    changeCategory(category);
   };
 
   return (
