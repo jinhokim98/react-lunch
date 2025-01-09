@@ -5,15 +5,19 @@ import styles from './style.module.css';
 type ModalProps = React.PropsWithChildren & {
   name: string;
   title: string;
-  onClose?: () => void;
+  button?: React.ComponentProps<'button'>;
+  buttonName: string;
 };
 
-export const Modal = ({children, name, title, onClose}: ModalProps) => {
+export const Modal = ({children, name, title, button, buttonName}: ModalProps) => {
   const {modals, closeModal} = useModalStore();
 
   const isOpen = modals[name];
-  const handleClose = () => {
-    if (onClose) onClose();
+
+  const handleOnClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (button && button.onClick) {
+      button.onClick(event);
+    }
     closeModal(name);
   };
 
@@ -23,8 +27,8 @@ export const Modal = ({children, name, title, onClose}: ModalProps) => {
       <div className={styles.modalContainer}>
         <h2 className={`${styles.modalTitle} text-title`}>{title}</h2>
         {children}
-        <Button variants="primary" onClick={handleClose}>
-          닫기
+        <Button type={button?.type} variants="primary" onClick={handleOnClick} {...button}>
+          {buttonName}
         </Button>
       </div>
     </div>

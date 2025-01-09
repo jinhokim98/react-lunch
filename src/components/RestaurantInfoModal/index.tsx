@@ -5,12 +5,13 @@ import styles from './style.module.css';
 export const RestaurantInfoModal = () => {
   const {selectedRestaurant, selectRestaurant} = useRestaurantStore();
 
-  const onClose = () => {
-    selectRestaurant(null);
-  };
-
   return (
-    <Modal name="info" title={selectedRestaurant?.name ?? '음식점 정보'} onClose={onClose}>
+    <Modal
+      name="info"
+      title={selectedRestaurant?.name ?? '음식점 정보'}
+      buttonName="닫기"
+      button={{onClick: () => selectRestaurant(null)}}
+    >
       <div className={styles.restaurantInfo}>
         <p className="restaurant-info__description text-body">{selectedRestaurant?.description}</p>
       </div>
