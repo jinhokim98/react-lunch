@@ -1,13 +1,16 @@
+import {Select} from '../Select';
 import styles from './style.module.css';
 
 export const FilterContainer = () => {
   return (
     <section className={styles.restaurantFilterContainer}>
-      <select
+      <Select
         name="category"
         id="category-filter"
         className={styles.restaurantFilterContainerSelect}
-        aria-label="음식점 카테고리 필터"
+        ariaLabel="음식점 카테고리 필터"
+        onChange={() => {}}
+        value={'전체'}
       >
         <option value="전체">전체</option>
         <option value="한식">한식</option>
@@ -16,7 +19,7 @@ export const FilterContainer = () => {
         <option value="양식">양식</option>
         <option value="아시안">아시안</option>
         <option value="기타">기타</option>
-      </select>
+      </Select>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import {Button} from '../Button';
+import {Select} from '../Select';
 import styles from './style.module.css';
 
 export const AddRestaurant = () => {
@@ -8,7 +9,7 @@ export const AddRestaurant = () => {
         <label htmlFor="category" className="text-caption">
           카테고리
         </label>
-        <select name="category" id="category" required>
+        <Select name="category" id="category" required value="" onChange={() => {}}>
           <option value="">선택해 주세요</option>
           <option value="한식">한식</option>
           <option value="중식">중식</option>
@@ -16,7 +17,7 @@ export const AddRestaurant = () => {
           <option value="양식">양식</option>
           <option value="아시안">아시안</option>
           <option value="기타">기타</option>
-        </select>{' '}
+        </Select>
       </div>
 
       <div className={`${styles.formItem} ${styles.formItemRequired}`}>
