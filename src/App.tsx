@@ -1,5 +1,6 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import './styles/global.css';
+import {GNB} from './components/gnb';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,6 +15,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <GNB />
       <h1>Self-Paced React</h1>;
     </QueryClientProvider>
   );
