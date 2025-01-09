@@ -1,4 +1,4 @@
-type SelectProps = React.ComponentProps<'select'> & {
+type SelectProps = Omit<React.ComponentProps<'select'>, 'aria-label' | 'onChange'> & {
   ariaLabel?: string;
   onChange: (value: string) => void;
 };

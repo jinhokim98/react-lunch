@@ -1,7 +1,18 @@
+import {useState} from 'react';
+import {useRestaurantStore} from '../../store/restaurants';
 import {Select} from '../Select';
 import styles from './style.module.css';
 
 export const FilterContainer = () => {
+  const {filterByCategory} = useRestaurantStore();
+
+  const [selectedCategory, setSelectedCategory] = useState('전체');
+
+  const onChange = (category: string) => {
+    setSelectedCategory(category);
+    filterByCategory(category);
+  };
+
   return (
     <section className={styles.restaurantFilterContainer}>
       <Select
@@ -9,8 +20,8 @@ export const FilterContainer = () => {
         id="category-filter"
         className={styles.restaurantFilterContainerSelect}
         ariaLabel="음식점 카테고리 필터"
-        onChange={() => {}}
-        value={'전체'}
+        onChange={onChange}
+        value={selectedCategory}
       >
         <option value="전체">전체</option>
         <option value="한식">한식</option>
