@@ -5,17 +5,22 @@ import {restaurants} from '../constants/data';
 type State = {
   restaurants: Restaurant[];
   filteredRestaurants: Restaurant[];
+  selectedRestaurant: Restaurant | null;
 };
 
 type Action = {
   loadRestaurants: (restaurants: State['restaurants']) => void;
   filterByCategory: (category: string) => void;
+  selectRestaurant: (restaurant: State['selectedRestaurant']) => void;
 };
 
 export const useRestaurantStore = create<State & Action>(set => ({
   restaurants: restaurants,
   filteredRestaurants: restaurants,
+  selectedRestaurant: null,
+
   loadRestaurants: restaurants => set(() => ({restaurants, filteredRestaurants: restaurants})),
+
   filterByCategory: category =>
     set(state => ({
       filteredRestaurants: state.restaurants.filter(restaurant => {
@@ -23,4 +28,6 @@ export const useRestaurantStore = create<State & Action>(set => ({
         return restaurant.category === category;
       }),
     })),
+
+  selectRestaurant: selectedRestaurant => set(() => ({selectedRestaurant})),
 }));

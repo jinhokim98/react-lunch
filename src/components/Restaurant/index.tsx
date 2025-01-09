@@ -1,3 +1,5 @@
+import {useModalStore} from '../../store/modal';
+import {useRestaurantStore} from '../../store/restaurants';
 import {type Restaurant as RestaurantType} from '../../type/serviceType';
 import styles from './style.module.css';
 
@@ -10,9 +12,18 @@ const IMAGE_BY_CATEGORY: Record<string, string> = {
   기타: '/category-etc.png',
 };
 
-export const Restaurant = ({id, name, description, category}: RestaurantType) => {
+export const Restaurant = (restaurant: RestaurantType) => {
+  const {id, name, description, category} = restaurant;
+  const {selectRestaurant} = useRestaurantStore();
+  const {openModal} = useModalStore();
+
+  const onClick = () => {
+    selectRestaurant(restaurant);
+    openModal('info');
+  };
+
   return (
-    <li className={styles.restaurant} id={id}>
+    <li className={styles.restaurant} id={id} onClick={onClick}>
       <div className={styles.restaurantCategory}>
         <img src={IMAGE_BY_CATEGORY[category]} alt={category} className={styles.categoryIcon} />
       </div>

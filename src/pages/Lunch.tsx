@@ -1,8 +1,12 @@
 import {FilterContainer} from '../components/FilterContainer';
 import {GNB} from '../components/gnb';
+import {RestaurantInfoModal} from '../components/RestaurantInfoModal';
 import {RestaurantList} from '../components/RestaurantList';
+import {useModalStore} from '../store/modal';
 
 export const Lunch = () => {
+  const {modals} = useModalStore();
+
   return (
     <>
       <GNB />
@@ -10,7 +14,7 @@ export const Lunch = () => {
         <FilterContainer />
         <RestaurantList />
       </main>
-      <aside></aside>
+      <aside>{modals['info'] && <RestaurantInfoModal />}</aside>
     </>
   );
 };
