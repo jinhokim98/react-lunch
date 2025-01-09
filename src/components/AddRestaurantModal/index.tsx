@@ -1,4 +1,3 @@
-import {Button} from '../Button';
 import {Modal} from '../Modal';
 import {Select} from '../Select';
 import styles from './style.module.css';
@@ -32,8 +31,6 @@ export const AddRestaurantModal = () => {
           <textarea name="description" id="description" cols={30} rows={5}></textarea>
           <span className={`${styles.helpText} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
         </div>
-
-        <Button variants="primary" />
       </form>
     </Modal>
   );
