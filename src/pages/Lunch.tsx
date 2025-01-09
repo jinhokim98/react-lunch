@@ -1,3 +1,4 @@
+import {AddRestaurantModal} from '../components/AddRestaurantModal';
 import {FilterContainer} from '../components/FilterContainer';
 import {GNB} from '../components/gnb';
 import {RestaurantInfoModal} from '../components/RestaurantInfoModal';
@@ -14,7 +15,10 @@ export const Lunch = () => {
         <FilterContainer />
         <RestaurantList />
       </main>
-      <aside>{modals['info'] && <RestaurantInfoModal />}</aside>
+      <aside>
+        {modals['info'] && <RestaurantInfoModal />}
+        {modals['add'] && <AddRestaurantModal />}
+      </aside>
     </>
   );
 };
