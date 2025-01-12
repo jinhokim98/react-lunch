@@ -1,14 +1,16 @@
-import {useRestaurantStore} from '../../store/restaurants';
+import {type Restaurant as RestaurantType} from '../../type/serviceType';
 import {Restaurant} from '../Restaurant';
 import styles from './style.module.css';
 
-export const RestaurantList = () => {
-  const {filteredRestaurants} = useRestaurantStore();
+type RestaurantListProps = {
+  restaurantList: RestaurantType[];
+};
 
+export const RestaurantList = ({restaurantList}: RestaurantListProps) => {
   return (
     <section className={styles.restaurantListContainer}>
       <ul className="restaurant-list">
-        {filteredRestaurants.map(restaurants => (
+        {restaurantList.map(restaurants => (
           <Restaurant key={restaurants.id} {...restaurants} />
         ))}
       </ul>
