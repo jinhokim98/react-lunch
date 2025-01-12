@@ -13,10 +13,8 @@ const BUTTON_STYLE: Record<ButtonVariants, string> = {
 
 export const Button = ({children, variants, ...buttonProps}: ButtonProps) => {
   return (
-    <div className={styles.buttonContainer}>
-      <button className={`${styles.button} ${BUTTON_STYLE[variants]} text-caption`} {...buttonProps}>
-        {children}
-      </button>
-    </div>
+    <button className={`${styles.button} ${BUTTON_STYLE[variants]} text-caption`} {...buttonProps}>
+      {children}
+    </button>
   );
 };
