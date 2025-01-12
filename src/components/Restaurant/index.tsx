@@ -9,12 +9,12 @@ import styles from './style.module.css';
 
 export const Restaurant = (restaurant: RestaurantType) => {
   const {id, name, description, category, distance, favorite} = restaurant;
-  const {selectRestaurant} = useRestaurantStore();
+  const {selectRestaurantId} = useRestaurantStore();
   const {patchRestaurant} = usePatchRestaurants();
   const {openModal} = useModalStore();
 
   const onClick = () => {
-    selectRestaurant(restaurant);
+    selectRestaurantId(restaurant.id);
     openModal(MODAL_NAME.info);
   };
 
