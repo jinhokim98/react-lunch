@@ -15,7 +15,7 @@ const IMAGE_BY_CATEGORY: Record<string, string> = {
 };
 
 export const Restaurant = (restaurant: RestaurantType) => {
-  const {id, name, description, category} = restaurant;
+  const {id, name, description, category, distance} = restaurant;
   const {selectRestaurant} = useRestaurantStore();
   const {openModal} = useModalStore();
 
@@ -31,6 +31,7 @@ export const Restaurant = (restaurant: RestaurantType) => {
       </div>
       <div className={styles.restaurantInfo}>
         <h3 className={`${styles.restaurantName} text-subtitle`}>{name}</h3>
+        <h4 className={`${styles.restaurantDistance} text-body`}>{`캠퍼스부터 ${distance}분 내`}</h4>
         <p className={`${styles.restaurantDescription} text-body`}>{description}</p>
       </div>
     </li>
