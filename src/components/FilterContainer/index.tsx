@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Category, SortBy, useRestaurantStore} from '../../store/restaurants';
+import {ExtendsAllCategory, SortBy, useRestaurantStore} from '../../store/restaurants';
 import {Select} from '../Select';
 import styles from './style.module.css';
 import {typeCasting} from '../../utils/validate';
@@ -8,7 +8,7 @@ import {categoryList, sortByList} from '../../constants/condition';
 export const FilterContainer = () => {
   const {changeCategory, changeSortBy} = useRestaurantStore();
 
-  const [selectedCategory, setSelectedCategory] = useState<Category>('전체');
+  const [selectedCategory, setSelectedCategory] = useState<ExtendsAllCategory>('전체');
   const [selectedSortBy, setSelectedSortBy] = useState<SortBy>('이름순');
 
   const onCategoryChange = (input: string) => {

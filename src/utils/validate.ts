@@ -1,4 +1,4 @@
-import {Category, SortBy} from '../store/restaurants';
+import {ExtendsAllCategory, SortBy} from '../store/restaurants';
 
 export const typeCasting = {
   category: (category: string) => {
@@ -6,7 +6,7 @@ export const typeCasting = {
     if (!categories.includes(category)) {
       throw new Error('카테고리 유형에 맞지 않습니다.');
     }
-    return category as Category;
+    return category as ExtendsAllCategory;
   },
   sortBy: (sortBy: string) => {
     const sortByList: string[] = ['이름순', '거리순'];
