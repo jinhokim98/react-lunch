@@ -2,11 +2,10 @@ import {useRef, useState} from 'react';
 import {Modal} from '../Modal';
 import {Select} from '../Select';
 import styles from './style.module.css';
-import {Restaurant} from '../../type/serviceType';
+import {Category, Restaurant} from '../../type/serviceType';
 import {usePostRestaurants} from '../../hooks/usePostRestaurant';
 import {MODAL_NAME} from '../../constants/modal';
 import {categoryList} from '../../constants/condition';
-import {Category} from '../../store/restaurants';
 import {typeCasting} from '../../utils/validate';
 
 type FormData = Omit<Restaurant, 'category'> & {
@@ -119,6 +118,18 @@ export const AddRestaurantModal = () => {
             onChange={event => handleChange('description', event.target.value)}
           ></textarea>
           <span className={`${styles.helpText} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
+        </div>
+
+        <div className={`${styles.formItem}`}>
+          <label htmlFor="name text-caption">참고 링크</label>
+          <input
+            type="text"
+            name="link"
+            id="link"
+            value={formData.link}
+            onChange={event => handleChange('link', event.target.value)}
+          />
+          <span className={`${styles.helpText} text-caption`}>매장 정보를 확인할 수 있는 링크를 입력해 주세요.</span>
         </div>
       </form>
     </Modal>

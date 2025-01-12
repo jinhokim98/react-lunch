@@ -10,6 +10,7 @@ export type Restaurant = {
   description: string;
   distance: number;
   category: Category;
+  link?: string;
 };
 
 export type ModalName = keyof typeof MODAL_NAME;
