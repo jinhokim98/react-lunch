@@ -1,16 +1,26 @@
 import {useState} from 'react';
-import {useRestaurantStore} from '../../store/restaurants';
+import {Category, SortBy, useRestaurantStore} from '../../store/restaurants';
 import {Select} from '../Select';
 import styles from './style.module.css';
+import {typeCasting} from '../../utils/validate';
+import {categoryList, sortByList} from '../../constants/condition';
 
 export const FilterContainer = () => {
-  const {changeCategory} = useRestaurantStore();
+  const {changeCategory, changeSortBy} = useRestaurantStore();
 
-  const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [selectedCategory, setSelectedCategory] = useState<Category>('전체');
+  const [selectedSortBy, setSelectedSortBy] = useState<SortBy>('이름순');
 
-  const onChange = (category: string) => {
+  const onCategoryChange = (input: string) => {
+    const category = typeCasting.category(input);
     setSelectedCategory(category);
     changeCategory(category);
+  };
+
+  const onSortByChange = (input: string) => {
+    const sortBy = typeCasting.sortBy(input);
+    setSelectedSortBy(sortBy);
+    changeSortBy(sortBy);
   };
 
   return (
@@ -20,16 +30,28 @@ export const FilterContainer = () => {
         id="category-filter"
         className={styles.restaurantFilterContainerSelect}
         ariaLabel="음식점 카테고리 필터"
-        onChange={onChange}
+        onChange={onCategoryChange}
         value={selectedCategory}
       >
-        <option value="전체">전체</option>
-        <option value="한식">한식</option>
-        <option value="중식">중식</option>
-        <option value="일식">일식</option>
-        <option value="양식">양식</option>
-        <option value="아시안">아시안</option>
-        <option value="기타">기타</option>
+        {categoryList.map(category => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </Select>
+      <Select
+        name="sortBy"
+        id="sortBy"
+        className={styles.restaurantFilterContainerSelect}
+        ariaLabel="음식점 정렬 필터"
+        onChange={onSortByChange}
+        value={selectedSortBy}
+      >
+        {sortByList.map(sortBy => (
+          <option key={sortBy} value={sortBy}>
+            {sortBy}
+          </option>
+        ))}
       </Select>
     </section>
   );
