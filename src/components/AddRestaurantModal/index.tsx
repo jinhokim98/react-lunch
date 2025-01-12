@@ -46,12 +46,22 @@ export const AddRestaurantModal = () => {
     postRestaurant({...formData, category, id: Date.now().toString()});
   };
 
+  const handleCancel = () => {
+    setFormData({
+      id: '',
+      name: '',
+      description: '',
+      distance: 0,
+      category: null,
+    });
+  };
+
   return (
     <Modal
       name={MODAL_NAME.add}
       title="새로운 음식점"
-      buttonName="추가하기"
-      button={{type: 'submit', disabled, onClick: handleModalSubmit}}
+      primaryButton={{buttonName: '추가하기', type: 'submit', disabled, onClick: handleModalSubmit}}
+      secondaryButton={{buttonName: '취소하기', onClick: handleCancel}}
     >
       <form ref={formRef} onSubmit={handleSubmit}>
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>

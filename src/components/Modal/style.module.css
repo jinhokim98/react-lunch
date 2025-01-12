@@ -30,3 +30,11 @@
 .modalTitle {
   margin-bottom: 36px;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}

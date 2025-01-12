@@ -15,8 +15,8 @@ export const RestaurantInfoModal = () => {
     <Modal
       name={MODAL_NAME.info}
       title={selectedRestaurant.name}
-      buttonName="닫기"
-      button={{onClick: () => selectRestaurant(null)}}
+      primaryButton={{buttonName: '닫기', onClick: () => selectRestaurant(null)}}
+      secondaryButton={{buttonName: '삭제하기'}}
     >
       <div className={styles.restaurantInfo}>
         <RestaurantImage category={selectedRestaurant.category} />
