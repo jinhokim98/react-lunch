@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {Children, useState} from 'react';
 import styles from './style.module.css';
 
 type TabProps = {
@@ -34,6 +34,9 @@ export const Tabs = ({tabNames, children}: TabsProps) => {
     setActiveIndex(index);
   };
 
+  const childrenArray = Children.toArray(children);
+  console.log(childrenArray);
+
   return (
     <main>
       <div className={styles.container}>
@@ -41,7 +44,7 @@ export const Tabs = ({tabNames, children}: TabsProps) => {
           <Tab key={tabName} tabName={tabName} active={activeIndex === index} index={index} changeTab={changeTab} />
         ))}
       </div>
-      {children}
+      {childrenArray[activeIndex]}
     </main>
   );
 };
