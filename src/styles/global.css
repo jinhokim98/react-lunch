@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 ul,
 li {
   list-style: none;
