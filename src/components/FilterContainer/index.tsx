@@ -1,9 +1,10 @@
 import {useState} from 'react';
-import {ExtendsAllCategory, SortBy, useRestaurantStore} from '../../store/restaurants';
+import {useRestaurantStore} from '../../store/restaurants';
 import {Select} from '../Select';
 import styles from './style.module.css';
 import {typeCasting} from '../../utils/validate';
 import {categoryListExtendsAll, sortByList} from '../../constants/condition';
+import {ExtendsAllCategory, SortBy} from '../../type/serviceType';
 
 export const FilterContainer = () => {
   const {changeCategory, changeSortBy} = useRestaurantStore();
