@@ -1,7 +1,7 @@
 import {AddRestaurantModal} from '../components/AddRestaurantModal';
 import {GNB} from '../components/gnb';
 import {RestaurantInfoModal} from '../components/RestaurantInfoModal';
-import {LoadRestaurants} from '../hooks/LoadRestaurants';
+import {LoadRestaurants} from '../components/Loader/LoadRestaurants';
 import {useModalStore} from '../store/modal';
 
 import {MODAL_NAME} from '../constants/modal';

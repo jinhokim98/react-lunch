@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
-import {useRestaurantStore} from '../store/restaurants';
-import {useGetRestaurants} from './useGetRestaurants';
+import {useRestaurantStore} from '../../store/restaurants';
+import {useGetRestaurants} from '../../hooks/useGetRestaurants';
 
 export const LoadRestaurants = ({children}: React.PropsWithChildren) => {
   const {loadRestaurants} = useRestaurantStore();
