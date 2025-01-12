@@ -6,14 +6,14 @@ type State = {
   category: ExtendsAllCategory;
   sortBy: SortBy;
   filteredRestaurants: Restaurant[];
-  selectedRestaurant: Restaurant | null;
+  selectedRestaurantId: string | null;
 };
 
 type Action = {
   loadRestaurants: (restaurants: State['restaurants']) => void;
   changeCategory: (category: State['category']) => void;
   changeSortBy: (sortBy: State['sortBy']) => void;
-  selectRestaurant: (restaurant: State['selectedRestaurant']) => void;
+  selectRestaurantId: (restaurant: State['selectedRestaurantId']) => void;
   addRestaurant: (newRestaurant: Restaurant) => void;
 };
 
@@ -38,7 +38,7 @@ export const useRestaurantStore = create<State & Action>((set, get) => {
     category: '전체',
     sortBy: '이름순',
     filteredRestaurants: [],
-    selectedRestaurant: null,
+    selectedRestaurantId: null,
 
     loadRestaurants: restaurants =>
       set(() => ({restaurants, filteredRestaurants: filterByCategory(restaurants, get().category)})),
@@ -55,7 +55,7 @@ export const useRestaurantStore = create<State & Action>((set, get) => {
         filteredRestaurants: sortRestaurantList(get().filteredRestaurants, sortBy),
       })),
 
-    selectRestaurant: selectedRestaurant => set(() => ({selectedRestaurant})),
+    selectRestaurantId: selectedRestaurantId => set(() => ({selectedRestaurantId})),
 
     // 비동기 상태관리를 tanstack query에 위임하여 아래 메서드는 사용하지 않습니다.
     addRestaurant: newRestaurant =>

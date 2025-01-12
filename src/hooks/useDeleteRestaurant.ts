@@ -8,9 +8,12 @@ export const useDeleteRestaurant = () => {
   const {mutate, ...rest} = useMutation({
     mutationKey: [QUERY_KEYS.deleteRestaurant],
     mutationFn: deleteRestaurant,
-    onSuccess: () => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.getRestaurants],
+      });
+      queryClient.removeQueries({
+        queryKey: [QUERY_KEYS.getRestaurant, data.id],
       });
     },
   });

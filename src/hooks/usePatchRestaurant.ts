@@ -8,9 +8,12 @@ export const usePatchRestaurants = () => {
   const {mutate, ...rest} = useMutation({
     mutationKey: [QUERY_KEYS.postRestaurant],
     mutationFn: patchRestaurant,
-    onSuccess: () => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.getRestaurants],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.getRestaurant, data.id],
       });
     },
   });
