@@ -8,7 +8,7 @@ import {MODAL_NAME} from '../../constants/modal';
 import {categoryList} from '../../constants/condition';
 import {typeCasting} from '../../utils/validate';
 
-type FormData = Omit<Restaurant, 'category'> & {
+type FormData = Omit<Restaurant, 'category' | 'favorite'> & {
   category: Category | null;
 };
 
@@ -43,7 +43,7 @@ export const AddRestaurantModal = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const category = typeCasting.category(formData.category ?? '');
-    postRestaurant({...formData, category, id: Date.now().toString()});
+    postRestaurant({...formData, category, favorite: false, id: Date.now().toString()});
   };
 
   const handleCancel = () => {

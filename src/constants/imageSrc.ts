@@ -6,4 +6,6 @@ export const IMAGE_SRC = {
   categoryWestern: import.meta.env.DEV ? '/category-western.png' : 'https://image.jinokim.site/category-western.png',
   categoryAsian: import.meta.env.DEV ? '/category-asian.png' : 'https://image.jinokim.site/category-asian.png',
   categoryEtc: import.meta.env.DEV ? '/category-etc.png' : 'https://image.jinokim.site/category-etc.png',
+  favoriteIconFilled: '/favorite-icon-filled.png',
+  favoriteIconLined: '/favorite-icon-lined.png',
 } as const;

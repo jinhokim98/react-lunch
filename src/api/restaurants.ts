@@ -25,6 +25,20 @@ export const postRestaurant = async (restaurant: Restaurant): Promise<void> => {
   }
 };
 
+export const patchRestaurant = async (restaurant: Restaurant): Promise<void> => {
+  const response = await fetch(`http://localhost:3000/restaurants/${restaurant.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(restaurant),
+  });
+
+  if (!response.ok) {
+    throw new Error('에러가 발생했습니다.');
+  }
+};
+
 export const deleteRestaurant = async (id: string): Promise<void> => {
   const response = await fetch(`http://localhost:3000/restaurants/${id}`, {
     method: 'DELETE',
