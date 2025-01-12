@@ -7,6 +7,7 @@ import {useModalStore} from '../store/modal';
 import {MODAL_NAME} from '../constants/modal';
 import {Tabs} from '../components/Tabs';
 import {AllRestaurants} from '../components/AllRestaurants';
+import {FavoriteRestaurants} from '../components/FavoriteRestaurants';
 
 export const Lunch = () => {
   const {modals} = useModalStore();
@@ -16,7 +17,7 @@ export const Lunch = () => {
       <GNB />
       <Tabs tabNames={['모든 음식점', '자주 가는 음식점']}>
         <AllRestaurants />
-        <section className="자주 가는 음식점"></section>
+        <FavoriteRestaurants />
       </Tabs>
       <aside>
         {modals[MODAL_NAME.info] && <RestaurantInfoModal />}

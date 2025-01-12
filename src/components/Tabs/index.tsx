@@ -35,7 +35,6 @@ export const Tabs = ({tabNames, children}: TabsProps) => {
   };
 
   const childrenArray = Children.toArray(children);
-  console.log(childrenArray);
 
   return (
     <main>
