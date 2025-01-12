@@ -21,6 +21,19 @@ export const postRestaurant = async (restaurant: Restaurant): Promise<void> => {
   });
 
   if (!response.ok) {
-    throw new Error('불러오던 중 에러가 발생했습니다.');
+    throw new Error('에러가 발생했습니다.');
+  }
+};
+
+export const deleteRestaurant = async (id: string): Promise<void> => {
+  const response = await fetch(`http://localhost:3000/restaurants/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('에러가 발생했습니다.');
   }
 };

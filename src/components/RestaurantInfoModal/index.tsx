@@ -1,4 +1,5 @@
 import {MODAL_NAME} from '../../constants/modal';
+import {useDeleteRestaurant} from '../../hooks/useDeleteRestaurant';
 import {useRestaurantStore} from '../../store/restaurants';
 import {Modal} from '../Modal';
 import {RestaurantImage} from '../RestaurantImage';
@@ -6,6 +7,7 @@ import styles from './style.module.css';
 
 export const RestaurantInfoModal = () => {
   const {selectedRestaurant, selectRestaurant} = useRestaurantStore();
+  const {deleteRestaurant} = useDeleteRestaurant();
 
   if (!selectedRestaurant) {
     return null;
@@ -16,7 +18,7 @@ export const RestaurantInfoModal = () => {
       name={MODAL_NAME.info}
       title={selectedRestaurant.name}
       primaryButton={{buttonName: '닫기', onClick: () => selectRestaurant(null)}}
-      secondaryButton={{buttonName: '삭제하기'}}
+      secondaryButton={{buttonName: '삭제하기', onClick: () => deleteRestaurant(selectedRestaurant.id)}}
     >
       <div className={styles.restaurantInfo}>
         <RestaurantImage category={selectedRestaurant.category} />
