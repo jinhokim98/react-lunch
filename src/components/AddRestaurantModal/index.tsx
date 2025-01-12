@@ -5,20 +5,31 @@ import styles from './style.module.css';
 import {Restaurant} from '../../type/serviceType';
 import {usePostRestaurants} from '../../hooks/usePostRestaurant';
 import {MODAL_NAME} from '../../constants/modal';
+import {categoryList} from '../../constants/condition';
+import {Category} from '../../store/restaurants';
+import {typeCasting} from '../../utils/validate';
+
+type FormData = Omit<Restaurant, 'category'> & {
+  category: Category | null;
+};
 
 export const AddRestaurantModal = () => {
   const {postRestaurant} = usePostRestaurants();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const [formData, setFormData] = useState<Restaurant>({
+  const [formData, setFormData] = useState<FormData>({
     id: '',
     name: '',
     description: '',
     distance: 0,
-    category: '',
+    category: null,
   });
 
-  const disabled = formData.name.trim() === '' || formData.description.trim() === '' || formData.category === '';
+  const disabled =
+    formData.name.trim() === '' ||
+    formData.description.trim() === '' ||
+    formData.category === null ||
+    formData.distance === 0;
 
   const handleChange = (field: keyof Restaurant, value: string | number) => {
     setFormData(prev => ({...prev, [field]: value}));
@@ -32,7 +43,8 @@ export const AddRestaurantModal = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    postRestaurant({...formData, id: Date.now().toString()});
+    const category = typeCasting.category(formData.category ?? '');
+    postRestaurant({...formData, category, id: Date.now().toString()});
   };
 
   return (
@@ -51,16 +63,15 @@ export const AddRestaurantModal = () => {
             name="category"
             id="category"
             required
-            value={formData.category}
+            value={formData.category ?? ''}
             onChange={value => handleChange('category', value)}
           >
             <option value="">선택해 주세요</option>
-            <option value="한식">한식</option>
-            <option value="중식">중식</option>
-            <option value="일식">일식</option>
-            <option value="양식">양식</option>
-            <option value="아시안">아시안</option>
-            <option value="기타">기타</option>
+            {categoryList.map(category => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
           </Select>
         </div>
 
@@ -77,23 +88,23 @@ export const AddRestaurantModal = () => {
         </div>
 
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>
-          <label htmlFor="category" className="text-caption">
+          <label htmlFor="distance" className="text-caption">
             거리(도보 이동 시간)
           </label>
           <Select
-            name="category"
-            id="category"
+            name="distance"
+            id="distance"
             required
-            value={formData.category}
+            value={formData.distance}
             onChange={value => handleChange('distance', Number(value))}
           >
             <option value="">선택해 주세요</option>
-            <option value="한식">5</option>
-            <option value="중식">10</option>
-            <option value="일식">15</option>
-            <option value="양식">20</option>
-            <option value="아시안">25</option>
-            <option value="기타">30</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
           </Select>
         </div>
 

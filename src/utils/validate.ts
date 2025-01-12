@@ -1,9 +1,15 @@
-import {ExtendsAllCategory, SortBy} from '../store/restaurants';
+import {categoryList, categoryListExtendsAll} from '../constants/condition';
+import {Category, ExtendsAllCategory, SortBy} from '../store/restaurants';
 
 export const typeCasting = {
   category: (category: string) => {
-    const categories: string[] = ['전체', '한식', '일식', '중식', '양식', '아시안', '기타'];
-    if (!categories.includes(category)) {
+    if (!categoryList.includes(category)) {
+      throw new Error('카테고리 유형에 맞지 않습니다.');
+    }
+    return category as Category;
+  },
+  categoryExtendsAll: (category: string) => {
+    if (!categoryListExtendsAll.includes(category)) {
       throw new Error('카테고리 유형에 맞지 않습니다.');
     }
     return category as ExtendsAllCategory;

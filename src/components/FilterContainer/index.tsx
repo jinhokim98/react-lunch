@@ -3,7 +3,7 @@ import {ExtendsAllCategory, SortBy, useRestaurantStore} from '../../store/restau
 import {Select} from '../Select';
 import styles from './style.module.css';
 import {typeCasting} from '../../utils/validate';
-import {categoryList, sortByList} from '../../constants/condition';
+import {categoryListExtendsAll, sortByList} from '../../constants/condition';
 
 export const FilterContainer = () => {
   const {changeCategory, changeSortBy} = useRestaurantStore();
@@ -12,7 +12,7 @@ export const FilterContainer = () => {
   const [selectedSortBy, setSelectedSortBy] = useState<SortBy>('이름순');
 
   const onCategoryChange = (input: string) => {
-    const category = typeCasting.category(input);
+    const category = typeCasting.categoryExtendsAll(input);
     setSelectedCategory(category);
     changeCategory(category);
   };
@@ -33,7 +33,7 @@ export const FilterContainer = () => {
         onChange={onCategoryChange}
         value={selectedCategory}
       >
-        {categoryList.map(category => (
+        {categoryListExtendsAll.map(category => (
           <option key={category} value={category}>
             {category}
           </option>
