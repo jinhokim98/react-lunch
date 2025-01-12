@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  position: relative;
+
+  width: 100%;
+  padding: 0 16px;
+
+  margin: 32px 0;
+}
+
+.container::after {
+  position: absolute;
+  left: 16px;
+  bottom: -10px;
+
+  width: calc(100% - 32px);
+  height: 2px;
+  background-color: var(--grey-200);
+  content: '';
+}
+
+.tab {
+  flex: 1;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.tabActive {
+  color: var(--primary-color);
+}
+
+.indicator {
+  display: block;
+  position: absolute;
+  flex: 1;
+  bottom: -10px;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.hideIndicator {
+  display: none;
+}
