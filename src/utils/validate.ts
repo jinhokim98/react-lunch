@@ -1,5 +1,5 @@
 import {categoryList, categoryListExtendsAll} from '../constants/condition';
-import {Category, ExtendsAllCategory, SortBy} from '../store/restaurants';
+import {Category, ExtendsAllCategory, SortBy} from '../type/serviceType';
 
 export const typeCasting = {
   category: (category: string) => {
