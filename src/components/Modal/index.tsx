@@ -43,14 +43,19 @@ export const Modal = ({children, name, title, primaryButton, secondaryButton}: M
           {children}
           <div className={styles.buttonContainer}>
             <Button
-              type={secondaryButton.type}
+              type={secondaryButton.type ?? 'button'}
               variants="secondary"
               {...secondaryButton}
               onClick={handleSecondaryClick}
             >
               {secondaryButton.buttonName}
             </Button>
-            <Button type={primaryButton.type} variants="primary" {...primaryButton} onClick={handlePrimaryClick}>
+            <Button
+              type={primaryButton.type ?? 'submit'}
+              variants="primary"
+              {...primaryButton}
+              onClick={handlePrimaryClick}
+            >
               {primaryButton.buttonName}
             </Button>
           </div>
