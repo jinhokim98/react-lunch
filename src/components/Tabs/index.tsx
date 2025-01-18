@@ -1,4 +1,4 @@
-import {Children, useState} from 'react';
+import React, {Children, useState} from 'react';
 import styles from './style.module.css';
 
 type TabProps = {
@@ -23,7 +23,8 @@ const Tab = ({tabName, active, index, changeTab}: TabProps) => {
   );
 };
 
-type TabsProps = React.PropsWithChildren & {
+type TabsProps = {
+  children: React.ReactNode;
   tabNames: string[];
 };
 
