@@ -26,7 +26,6 @@ export const RestaurantInfoModal = () => {
   return (
     <Modal
       name={MODAL_NAME.info}
-      title={restaurant.name}
       primaryButton={{buttonName: '닫기', onClick: () => selectRestaurantId(null)}}
       secondaryButton={{buttonName: '삭제하기', onClick: () => deleteRestaurant(restaurant.id)}}
     >

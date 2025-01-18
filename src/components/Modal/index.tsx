@@ -9,7 +9,7 @@ type ModalButton = React.ComponentProps<'button'> & {buttonName: string};
 
 type ModalProps = React.PropsWithChildren & {
   name: ModalName;
-  title: string;
+  title?: string;
   primaryButton: ModalButton;
   secondaryButton: ModalButton;
 };
@@ -39,7 +39,7 @@ export const Modal = ({children, name, title, primaryButton, secondaryButton}: M
       <div className={`${styles.modal} ${isOpen && styles.modalOpen}`}>
         <div className={styles.modalBackdrop} />
         <div className={styles.modalContainer} ref={modalRef}>
-          <h2 className={`${styles.modalTitle} text-title`}>{title}</h2>
+          {title && <h2 className={`${styles.modalTitle} text-title`}>{title}</h2>}
           {children}
           <div className={styles.buttonContainer}>
             <Button
