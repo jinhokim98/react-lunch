@@ -7,7 +7,7 @@ export type ExtendsAllCategory = Category | '전체';
 export type Restaurant = {
   id: string;
   name: string;
-  description: string;
+  description?: string;
   distance: number;
   category: Category;
   link?: string;

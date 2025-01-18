@@ -26,7 +26,7 @@ export const AddRestaurantModal = () => {
 
   const disabled =
     formData.name.trim() === '' ||
-    formData.description.trim() === '' ||
+    formData.description?.trim() === '' ||
     formData.category === null ||
     formData.distance === 0;
 
@@ -124,7 +124,7 @@ export const AddRestaurantModal = () => {
             id="description"
             cols={30}
             rows={5}
-            value={formData.description}
+            value={formData.description ?? ''}
             onChange={event => handleChange('description', event.target.value)}
           ></textarea>
           <span className={`${styles.helpText} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
@@ -136,7 +136,7 @@ export const AddRestaurantModal = () => {
             type="text"
             name="link"
             id="link"
-            value={formData.link}
+            value={formData.link ?? ''}
             onChange={event => handleChange('link', event.target.value)}
           />
           <span className={`${styles.helpText} text-caption`}>매장 정보를 확인할 수 있는 링크를 입력해 주세요.</span>
