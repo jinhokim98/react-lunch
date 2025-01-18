@@ -32,13 +32,17 @@ const sortRestaurantList = (restaurants: Restaurant[], sortBy: SortBy) => {
   });
 };
 
+const initialState: State = {
+  restaurants: [],
+  category: '전체',
+  sortBy: '이름순',
+  filteredRestaurants: [],
+  selectedRestaurantId: null,
+};
+
 export const useRestaurantStore = create<State & Action>((set, get) => {
   return {
-    restaurants: [],
-    category: '전체',
-    sortBy: '이름순',
-    filteredRestaurants: [],
-    selectedRestaurantId: null,
+    ...initialState,
 
     loadRestaurants: restaurants =>
       set(() => ({restaurants, filteredRestaurants: filterByCategory(restaurants, get().category)})),
