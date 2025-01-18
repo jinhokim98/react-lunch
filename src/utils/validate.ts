@@ -1,4 +1,4 @@
-import {categoryList, categoryListExtendsAll} from '../constants/condition';
+import {categoryList, categoryListExtendsAll, sortByList} from '../constants/condition';
 import {Category, ExtendsAllCategory, SortBy} from '../type/serviceType';
 
 export const typeCasting = {
@@ -15,7 +15,6 @@ export const typeCasting = {
     return category as ExtendsAllCategory;
   },
   sortBy: (sortBy: string) => {
-    const sortByList: string[] = ['이름순', '거리순'];
     if (!sortByList.includes(sortBy)) {
       throw new Error('정렬 유형에 맞지 않습니다.');
     }
